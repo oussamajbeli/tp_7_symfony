@@ -1,0 +1,18 @@
+{% block title %}
+	<h1 style="color:blue;">{{article.nom}}</h1>
+{% endblock %}
+
+{% block body %}
+
+	<h1>Nom:
+	</h1>
+	<p>{{article.nom}}</p>
+	<h1>Prix:
+	</h1>
+	<p>{{article.prix}}</p>
+	<h1>Category:</h1>
+	<p>{{article.category.titre}}</p>
+
+	<hr>
+	<a href="/">Retour</a>
+{% endblock %}

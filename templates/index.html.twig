@@ -1,0 +1,79 @@
+<html>
+
+	<head>
+		{% block title %}
+			{# List des Articles #}
+		{% endblock %}
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+	</head>
+	<body>
+
+
+		{% block body %}
+
+
+			{{include('inc/nav.html.twig')}}
+
+			<div class="container text-center" style="display:inline-flex;">
+				{{ form_start(form) }}
+				<div class="row">
+					<div class="col">
+						<div class="form-group" style="display:inline-flex;justify-content:space-between;font-size:19px;">
+							{{ form_row(form.nom) }}
+						</div>
+					</div>
+					<div class="col mt-4 ">
+						<div class="form-group">
+							<button type="submit" class="btn btn-success">Rechercher</button>
+						</div>
+					</div>
+				</div>
+
+				{{ form_end(form) }}
+			</div>
+
+			<h1>
+				Articles
+			</h1>
+			{% if articles %}
+
+				<table class="table" id="articles">
+					<thead>
+						<tr>
+							<th>Nom Article</th>
+							<th>Prix</th>
+							<th>Category</th>
+							<th>Actions</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						{% for article in articles %}
+							<tr>
+								<td>{{article.nom}}</td>
+								<td>{{article.prix}}</td>
+								<td>{{article.category.titre}}</td>
+								<td>
+									<a href="/article/{{article.id}}" class="btn btn-dark">Details</a>
+									<a href="/article/edit/{{article.id}}" class="btn btn-primary">Edit</a>
+									<a href="/article/delete/{{article.id}}" class="btn btn-danger" onclick="return confirm('Etes_vous sur de supprimer cet article?');">Supprimer</a>
+								</td>
+
+							</tr>
+						{% endfor %}
+					</tbody>
+				</tbody>
+			</table>
+		{% else %}
+			<p>Aucun articles</p>
+		{% endif %}
+
+
+	{% endblock %}
+
+
+	{% block javascript %}
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+	{% endblock %}
+</html></body></html>

@@ -1,0 +1,7 @@
+index:
+  path: /article_list
+  controller: App\Controller\IndexController::index
+
+art_cat:
+  path: /article/art_cat
+  controller: App\Controller\IndexController::articlesParCategory
